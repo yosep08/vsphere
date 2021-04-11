@@ -1,0 +1,2 @@
+# vsphere
+clone vm
