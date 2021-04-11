@@ -1,0 +1,14 @@
+---
+  - name: Clone the template
+    vmware_guest:
+      hostname: "{{ vcenter_ip }}"
+      username: "{{ vcenter_username }}"
+      password: "{{ vcenter_password }}"
+      validate_certs: False
+      name: testvm1
+      template: RHEL8_TEMP
+      datacenter: "{{ datacenter_name }}"
+      folder: yosep
+      state: poweredon
+      cluster: "{{ cluster_name }}"
+      wait_for_ip_address: yes
