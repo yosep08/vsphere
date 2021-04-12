@@ -1,6 +1,12 @@
 ---
 - name: Create VM in template
   hosts: all
+  vars:
+    - vcenter_ip: 192.168.1.184
+    - vcenter_username: administrator@server.ivt
+    - vcenter_password: 'P@ssw0rd'
+    - datacenter_name: vcenter.server.ivt
+    - cluster_name: DC-IVT
   tasks:
     - name: Clone the template
       vmware_guest:
