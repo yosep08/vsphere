@@ -14,10 +14,32 @@
         username: "{{ vcenter_username }}"
         password: "{{ vcenter_password }}"
         validate_certs: False
-        name: testvm1
+        name: "{{ hostname }}"
         template: RHEL8_TEMP
         datacenter: "{{ datacenter_name }}"
         folder: yosep
+        disk:
+        - size_gb: "{{ disk }}"
+          type: thin
+          datastore: SSD1
+        hardware:
+          memory_mb: "{{ memory }}"
+          num_cpus: "{{ cpu }}"
+          scsi: paravirtual
+         networks:
+         - name: VM Network
+           ip: "{{ ip_address }}"
+           netmask: 255.255.255.0
+           gateway: 192.168.1.254
+           domain: server.ivt
+           dns_servers:
+             - 192.168.1.170
+           type: static
+         customization:
+           dns_servers:
+           - 192.168.1.170
+           domain: server.ivt
+           password: new_vm_password
         state: poweredon
         cluster: "{{ cluster_name }}"
         wait_for_ip_address: yes
