@@ -26,7 +26,7 @@
           memory_mb: "{{ memory }}"
           num_cpus: "{{ cpu }}"
           scsi: paravirtual
-         networks:
+        networks:
          - name: VM Network
            ip: "{{ ip_address }}"
            netmask: 255.255.255.0
@@ -35,11 +35,11 @@
            dns_servers:
              - 192.168.1.170
            type: static
-         customization:
-           dns_servers:
-           - 192.168.1.170
-           domain: server.ivt
-           password: new_vm_password
+        customization:
+          dns_servers:
+          - 192.168.1.170
+          domain: server.ivt
+          password: new_vm_password
         state: poweredon
         cluster: "{{ cluster_name }}"
         wait_for_ip_address: yes
